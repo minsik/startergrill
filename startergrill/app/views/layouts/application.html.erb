@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Startergrill</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav>
+  <%= link_to "Starter Grill", home_url %>
+  <%= link_to "Menu", menu_url %>
+  <%= link_to "Location", location_url %>
+  <%= link_to "Help", help_url %>
+  <% if signed_in? %>
+  <%= link_to "Account Profile", users_url %>
+  <%= link_to "Reservation", reservations_url %>
+  <%= link_to "Online Ordering", orders_url %>
+  <%= link_to "Sign Out", session_url, method: 'delete' %></p>
+    <% else %>
+    <%= link_to "Sign Up", new_user_url %> or <%= link_to "Sign In to order and reservations.", new_session_url %>
+    <% end %>
+
+</nav>
+
+<%= yield %>
+<footer>
+<p>©2012 The Starter Grill, Inc. All rights reversed. Got a comment? Keep it to yourself!</p>
+</footer>
+</body>
+</html>
